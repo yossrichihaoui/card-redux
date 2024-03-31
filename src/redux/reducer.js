@@ -1,4 +1,4 @@
-import { ADDMOVIE, DELETEMOVIE } from "./actiontype"
+import { ADDMOVIE, DELETEMOVIE, EDITMOVIE } from "./actiontype"
 
 const initialState = {
     movies:[
@@ -27,16 +27,19 @@ const initialState = {
     
 }
 
-export const moviesRed = (state = initialState,action) => {
-  switch (action.type) {
+export const moviesRed = (state = initialState,{type,payload}) => {
+  switch (type) {
 
   case ADDMOVIE:
-    return { ...state, movies:[...state.movies,action.payload] }
+    return { ...state, movies:[...state.movies,payload] }
   case DELETEMOVIE:
         return { ...state, movies:state.movies.filter(
-            (e)=>e.id !== action.payload
+            (e)=>e.id !== payload
         ) }
-    
+   case EDITMOVIE:
+    return {...state,movies:state.movies.map( e=>e.id===payload.id? e=payload.data : e)
+
+    } 
   default:
     return state
   }

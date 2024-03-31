@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
 import { add } from '../redux/action';
 
-function Example() {
+function Editmovie() {
   const [show, setShow] = useState(false);
   const [title,settitle] = useState("");
   const [Poster,setposter] = useState("");
@@ -81,4 +81,4 @@ function Example() {
   );
 }
 
-export default Example;
+export default Editmovie;

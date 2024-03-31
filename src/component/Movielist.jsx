@@ -7,9 +7,19 @@ import { del } from '../redux/action';
 
 function Movielist() {
 const dispatch=useDispatch();
-
 const movies = useSelector((state)=>state.movies);
-console.log(movies);
+const edit = () => {
+  dispatch(
+      edit(movies.id,{
+      movies.title:
+    })
+  );
+  handleClose();
+};
+
+
+
+
   return (
     <div style={{display:'flex',justifyContent:"center",gap:"30px",
     flexWrap:"wrap",marginTop:"30px"}}>
@@ -22,7 +32,7 @@ console.log(movies);
           {e.description}
           </Card.Text>
         <Card.Text>{e.rating}</Card.Text>  
-        
+        <Button variant="primary" onClick={()=>dispatch(edit(e.id))}>EDIT</Button>
         <Button variant="primary" onClick={()=>dispatch(del(e.id))}>DELETE</Button>
       </Card.Body>
     </Card>
